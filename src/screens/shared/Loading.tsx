@@ -23,7 +23,7 @@ const styles: Styles = {
 	}
 };
 interface LoadingProps {
-	currentPokemon: number;
+	currentPokemonIndex: number;
 	pokemonCount: number;
 }
 export function Loading(props: LoadingProps) {
@@ -32,7 +32,7 @@ export function Loading(props: LoadingProps) {
 			<img style={styles.logo} src="/pokemon-store/assets/logo.svg"></img>
 			<div style={styles.label}>Downloading Pokemon List</div>
 			<div style={styles.counter}>
-				{props.currentPokemon} of {props.pokemonCount}
+				{props.currentPokemonIndex} of {props.pokemonCount}
 			</div>
 		</div>
 	);

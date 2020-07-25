@@ -10,6 +10,9 @@ import { Loading } from "../screens/shared/Loading";
 interface StoreContainerProps {
 	children: React.ReactNode;
 }
+const fromPokemonIndex = 0;
+const toPokemonIndex = 151;
+const pokemonCount = toPokemonIndex - fromPokemonIndex;
 export function StoreContainer(props: StoreContainerProps) {
 	const initialState = EMPTY_STATE;
 	const store = createStore(
@@ -17,8 +20,7 @@ export function StoreContainer(props: StoreContainerProps) {
 	);
 	const [apiReady, setApiReady] = React.useState({
 		loading: true,
-		pokemonCount: 150,
-		currentPokemon: 0,
+		currentPokemonIndex: 0,
 		error: false,
 		errorMessage: null
 	});
@@ -27,7 +29,7 @@ export function StoreContainer(props: StoreContainerProps) {
 			try {
 				const pokemonList: ProductState[] = [];
 				const response = await fetch(
-					`https://pokeapi.co/api/v2/pokemon/?limit=${apiReady.pokemonCount}`,
+					`https://pokeapi.co/api/v2/pokemon/?offset=${fromPokemonIndex}&limit=${toPokemonIndex}`,
 					{
 						method: "GET"
 					}
@@ -40,7 +42,7 @@ export function StoreContainer(props: StoreContainerProps) {
 				) {
 					setApiReady({
 						...apiReady,
-						currentPokemon: index
+						currentPokemonIndex: index
 					});
 					const pokemonData = await fetch(
 						jsonResponse.results[index].url,
@@ -73,8 +75,8 @@ export function StoreContainer(props: StoreContainerProps) {
 	if (apiReady.loading) {
 		return (
 			<Loading
-				currentPokemon={apiReady.currentPokemon}
-				pokemonCount={apiReady.pokemonCount}
+				currentPokemonIndex={apiReady.currentPokemonIndex + 1}
+				pokemonCount={pokemonCount}
 			/>
 		);
 	}
