@@ -36,7 +36,7 @@ export function StoreContainer(props: StoreContainerProps) {
 				console.log(jsonResponse);
 				for (
 					let index = 0;
-					index < jsonResponse.results.lenght;
+					index < jsonResponse.results.length;
 					index++
 				) {
 					console.log(index);
