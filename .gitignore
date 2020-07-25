@@ -1,0 +1,14 @@
+# node.js
+
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Sublime Text #
+
+*.sublime-workspace
+
+# Keep the build folder
+
+/public/js/*
+!/public/js/.gitkeep
