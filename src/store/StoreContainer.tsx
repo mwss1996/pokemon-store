@@ -33,11 +33,13 @@ export function StoreContainer(props: StoreContainerProps) {
 					}
 				);
 				const jsonResponse = await response.json();
+				console.log(jsonResponse);
 				for (
 					let index = 0;
 					index < jsonResponse.results.lenght;
 					index++
 				) {
+					console.log(index);
 					setApiReady({
 						...apiReady,
 						currentPokemon: index
