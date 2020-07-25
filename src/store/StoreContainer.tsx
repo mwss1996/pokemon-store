@@ -17,7 +17,7 @@ export function StoreContainer(props: StoreContainerProps) {
 	);
 	const [apiReady, setApiReady] = React.useState({
 		loading: true,
-		pokemonCount: 1,
+		pokemonCount: 150,
 		currentPokemon: 0,
 		error: false,
 		errorMessage: null
@@ -27,13 +27,17 @@ export function StoreContainer(props: StoreContainerProps) {
 			try {
 				const pokemonList: ProductState[] = [];
 				const response = await fetch(
-					"http://pokeapi.co/api/v2/pokemon/?limit=10000",
+					`https://pokeapi.co/api/v2/pokemon/?limit=${apiReady.pokemonCount}`,
 					{
 						method: "GET"
 					}
 				);
 				const jsonResponse = await response.json();
-				for (let index = 0; index < apiReady.pokemonCount; index++) {
+				for (
+					let index = 0;
+					index < jsonResponse.results.lenght;
+					index++
+				) {
 					setApiReady({
 						...apiReady,
 						currentPokemon: index
