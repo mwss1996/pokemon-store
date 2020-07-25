@@ -1,4 +1,4 @@
-# react-chat
+# pokemon-store
 
 This is a simple store application build with React.
 
