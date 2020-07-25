@@ -10,10 +10,10 @@ export function NavigationContainer() {
 		return (
 			<BrowserRouter>
 				<Switch>
-					<Route path={"/shopping-cart"}>
+					<Route path={"/pokemon-store/shopping-cart"}>
 						<ShoppingCartContainer />
 					</Route>
-					<Route>
+					<Route path={"/pokemon-store/"}>
 						<CatalogContainer />
 					</Route>
 				</Switch>

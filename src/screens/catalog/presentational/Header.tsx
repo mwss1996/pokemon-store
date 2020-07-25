@@ -74,7 +74,7 @@ export function Header(props: HeaderProps) {
 						...styles.shoppingCartButton,
 						color: theme.headerTextColor
 					}}
-					to={"/shopping-cart"}
+					to={"/pokemon-store/shopping-cart"}
 				>
 					<FontAwesomeIcon
 						style={styles.shoppingCartButtonIcon}

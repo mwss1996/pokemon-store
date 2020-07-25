@@ -45,7 +45,7 @@ export function Header(props: HeaderProps) {
 						...styles.backButton,
 						color: theme.headerTextColor
 					}}
-					to={"/"}
+					to={"/pokemon-store/"}
 				>
 					<FontAwesomeIcon
 						style={styles.backButtonIcon}
