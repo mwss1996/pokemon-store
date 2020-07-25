@@ -10,9 +10,8 @@ import { Loading } from "../screens/shared/Loading";
 interface StoreContainerProps {
 	children: React.ReactNode;
 }
-const fromPokemonIndex = 0;
-const toPokemonIndex = 151;
-const pokemonCount = toPokemonIndex - fromPokemonIndex;
+const apiOffset = 0;
+const apiLimit = 151;
 export function StoreContainer(props: StoreContainerProps) {
 	const initialState = EMPTY_STATE;
 	const store = createStore(
@@ -29,7 +28,7 @@ export function StoreContainer(props: StoreContainerProps) {
 			try {
 				const pokemonList: ProductState[] = [];
 				const response = await fetch(
-					`https://pokeapi.co/api/v2/pokemon/?offset=${fromPokemonIndex}&limit=${toPokemonIndex}`,
+					`https://pokeapi.co/api/v2/pokemon/?offset=${apiOffset}&limit=${apiLimit}`,
 					{
 						method: "GET"
 					}
@@ -76,7 +75,7 @@ export function StoreContainer(props: StoreContainerProps) {
 		return (
 			<Loading
 				currentPokemonIndex={apiReady.currentPokemonIndex + 1}
-				pokemonCount={pokemonCount}
+				pokemonCount={apiLimit}
 			/>
 		);
 	}
